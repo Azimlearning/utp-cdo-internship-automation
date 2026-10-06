@@ -1,0 +1,83 @@
+{
+ "flow": "13",
+ "package": "baselinex",
+ "scenario": "twofiles-wrongcolumns",
+ "at": "2026-10-02T11:56:24.186Z",
+ "flowId": "cb0072e0-279a-4348-b462-426f1d694bc9",
+ "stoppedTwins": [],
+ "firstPoll": "2026-10-02T11:57:05.5876645Z",
+ "run": "08584106646232686998406151945CU30",
+ "status": "Succeeded",
+ "code": null,
+ "runError": null,
+ "start": "2026-10-02T11:57:42.7891169Z",
+ "failed": [
+  {
+   "action": "Apply_to_each",
+   "code": "ActionFailed",
+   "error": "An action failed. No dependent actions succeeded."
+  },
+  {
+   "action": "Apply_to_each_2",
+   "code": "NotSpecified",
+   "error": ""
+  },
+  {
+   "action": "Filter_array_-_Host_company_name",
+   "code": "NotSpecified",
+   "error": ""
+  }
+ ],
+ "counts": {
+  "Add_a_row_into_a_table": {
+   "Succeeded": 1,
+   "Failed": 0,
+   "Skipped": 2
+  },
+  "Add_a_row_into_a_table_2": {
+   "Succeeded": 0,
+   "Failed": 0,
+   "Skipped": 8
+  },
+  "Add_a_row_into_a_table_3": {
+   "Succeeded": 2,
+   "Failed": 0,
+   "Skipped": 1
+  },
+  "Add_a_row_into_a_table_4": {
+   "Succeeded": 1,
+   "Failed": 0,
+   "Skipped": 7
+  },
+  "Add_a_row_into_a_table_5": {
+   "Succeeded": 0,
+   "Failed": 0,
+   "Skipped": 8
+  },
+  "Send_an_email_(V2)": {
+   "Succeeded": 0,
+   "Failed": 0,
+   "Skipped": 0
+  }
+ },
+ "teamsPosts": [
+  "Post_message_in_a_chat_or_channel:Succeeded",
+  "Post_message_in_a_chat_or_channel_13:Skipped",
+  "Post_message_in_a_chat_or_channel_2:Succeeded",
+  "Post_message_in_a_chat_or_channel_3:Skipped",
+  "Post_message_in_a_chat_or_channel_4:Succeeded",
+  "Post_message_in_a_chat_or_channel_5:Succeeded"
+ ],
+ "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/cb0072e0-279a-4348-b462-426f1d694bc9/runs/08584106646232686998406151945CU30",
+ "finalState": "Stopped",
+ "files": {
+  "/Documents/CDO-Sandbox/F7/Template/Host Company MasterList Template.xlsx": "(omitted)"
+ },
+ "after": {},
+ "expected": {
+  "status": "Succeeded"
+ },
+ "pass": true,
+ "why": [],
+ "note": "UNPLANNED: a locked flow-12 raw file (HC Supervisor columns) survived in the shared folder; flow 13 read it first and failed on trim(null). Baseline still reports Succeeded. Kept as evidence of the two-files failure mode (finding 13.3 / flow 12.3)."
+}

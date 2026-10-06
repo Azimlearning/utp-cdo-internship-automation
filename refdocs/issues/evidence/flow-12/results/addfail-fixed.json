@@ -1,0 +1,91 @@
+{
+  "flow": "12",
+  "package": "fixed",
+  "scenario": "addfail",
+  "at": "2026-10-02T05:18:49.008Z",
+  "flowId": "343b10e9-63cd-46b8-b250-d8acea08f679",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T05:19:07.1635534Z",
+  "run": "08584106885045910354895143025CU06",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "HC Supervisor MasterList Checking failed at: Apply_to_each_2",
+  "start": "2026-10-02T05:19:41.2771394Z",
+  "failed": [
+    {
+      "action": "Add_a_row_into_a_table_4",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Apply_to_each",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    },
+    {
+      "action": "Apply_to_each_2",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Condition_6",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Try_-_Check_HC_supervisors",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Add_a_row_into_a_table": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Add_a_row_into_a_table_3": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_4": {
+      "Succeeded": 0,
+      "Failed": 1,
+      "Skipped": 2,
+      "firstError": "Unable to process template language expressions in action 'Add_a_row_into_a_table_4' inputs at line '0' and column '0': 'Attempt to divide an integral or decimal value by zero in function 'div'.'."
+    },
+    "Add_a_row_into_a_table_5": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Succeeded",
+    "Post_message_FAILED_2:Succeeded",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/343b10e9-63cd-46b8-b250-d8acea08f679/runs/08584106885045910354895143025CU06",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Failed"
+  },
+  "pass": true,
+  "why": [],
+  "screenshot": "c:\\Users\\User\\Documents\\JOC\\CDO - Internship powerapps automation\\refdocs\\issues\\evidence\\flow-12\\addfail-fixed.png"
+}

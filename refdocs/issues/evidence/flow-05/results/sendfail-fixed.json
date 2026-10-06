@@ -1,0 +1,65 @@
+{
+  "flow": "05",
+  "package": "fixed",
+  "scenario": "sendfail",
+  "at": "2026-10-02T04:46:08.849Z",
+  "flowId": "79d5d481-c35a-404c-8b16-11080b798e13",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T04:46:14.1932383Z",
+  "run": "08584106904764712572824661291CU07",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "Bulk email failed at: Send_an_email_(V2)",
+  "start": "2026-10-02T04:46:49.5452798Z",
+  "failed": [
+    {
+      "action": "Apply_to_each",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    },
+    {
+      "action": "Condition",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Send_an_email_(V2)",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Try_-_Send_bulk_emails",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 1,
+      "Skipped": 2,
+      "firstError": "The 'inputs.parameters' of workflow operation 'Send_an_email_(V2)' of type 'OpenApiConnection' is not valid. Error details: Input parameter 'emailMessage/To' is required to be of type 'String/email'. The runtime value '\"not-an-email\"' to be converted doesn't have the expected format 'string/email'."
+    },
+    "Send_an_email_(V2)_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Succeeded",
+    "Post_message_FAILED_2:Succeeded",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/79d5d481-c35a-404c-8b16-11080b798e13/runs/08584106904764712572824661291CU07",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Failed"
+  },
+  "pass": true,
+  "why": []
+}

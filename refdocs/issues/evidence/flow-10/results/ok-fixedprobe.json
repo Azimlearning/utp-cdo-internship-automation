@@ -1,0 +1,57 @@
+{
+  "flow": "10",
+  "package": "fixedprobe",
+  "scenario": "ok",
+  "at": "2026-10-02T08:56:23.068Z",
+  "flowId": "c1d7ccbd-f23c-48ae-94ee-56797c7a8735",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T08:56:30.6259947Z",
+  "run": "08584106754595889058468329051CU08",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "Report Duty Reminder failed at: Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+  "start": "2026-10-02T08:57:06.4725822Z",
+  "failed": [
+    {
+      "action": "Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+      "code": "BadRequest",
+      "error": "Unable to process template language expressions in action 'Probe_-_Force_a_failure_(DELETE_AFTER_TEST)' inputs at line '0' and column '0': 'Attempt to divide an integral or decimal value by zero in function 'div'.'."
+    },
+    {
+      "action": "Try_-_Send_reminders",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Succeeded",
+    "Post_message_FAILED_2:Succeeded",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/c1d7ccbd-f23c-48ae-94ee-56797c7a8735/runs/08584106754595889058468329051CU08",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Failed",
+    "failedAction": "Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+    "counts": {
+      "Send_an_email_(V2)": {
+        "Succeeded": 0,
+        "Failed": 0
+      }
+    }
+  },
+  "pass": true,
+  "why": [],
+  "screenshot": "c:\\Users\\User\\Documents\\JOC\\CDO - Internship powerapps automation\\refdocs\\issues\\evidence\\flow-10\\ok-fixedprobe.png"
+}

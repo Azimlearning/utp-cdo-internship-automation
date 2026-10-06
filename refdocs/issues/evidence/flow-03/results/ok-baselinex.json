@@ -1,0 +1,49 @@
+{
+  "flow": "03",
+  "package": "baselinex",
+  "scenario": "ok",
+  "at": "2026-10-06T05:33:43.651Z",
+  "flowId": "7ff880ed-6c7a-40a5-9556-8aac32a55acf",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-06T05:33:51.7881903Z",
+  "run": "08584103420159867865384114614CU10",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-06T05:34:30.2097409Z",
+  "failed": [],
+  "counts": {
+    "Create_item": {
+      "Succeeded": 2,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Succeeded",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Succeeded",
+    "Post_message_in_a_chat_or_channel_4:Skipped",
+    "Post_message_in_a_chat_or_channel_5:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/7ff880ed-6c7a-40a5-9556-8aac32a55acf/runs/08584103420159867865384114614CU10",
+  "finalState": "Stopped",
+  "files": {},
+  "after": {
+    "CDO Sandbox - HC Supervisor": 2
+  },
+  "expected": {
+    "status": "Succeeded",
+    "counts": {
+      "Create_item": {
+        "Succeeded": 2
+      }
+    },
+    "after": {
+      "CDO Sandbox - HC Supervisor": 2
+    }
+  },
+  "pass": true,
+  "why": []
+}

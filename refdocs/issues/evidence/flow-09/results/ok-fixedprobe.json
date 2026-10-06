@@ -1,0 +1,58 @@
+{
+  "flow": "09",
+  "package": "fixedprobe",
+  "scenario": "ok",
+  "at": "2026-10-02T08:53:31.893Z",
+  "flowId": "595fdc17-71e0-4100-8e77-ce6794789108",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T08:53:36.4556058Z",
+  "run": "08584106756214779332013528629CU31",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "Email student update failed at: Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+  "start": "2026-10-02T08:54:24.9966643Z",
+  "failed": [
+    {
+      "action": "Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+      "code": "BadRequest",
+      "error": "Unable to process template language expressions in action 'Probe_-_Force_a_failure_(DELETE_AFTER_TEST)' inputs at line '0' and column '0': 'Attempt to divide an integral or decimal value by zero in function 'div'.'."
+    },
+    {
+      "action": "Try_-_Email_student",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 1
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Succeeded",
+    "Post_message_FAILED_2:Succeeded",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Skipped",
+    "Post_message_in_a_chat_or_channel_3:Succeeded",
+    "Post_message_in_a_chat_or_channel_4:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/595fdc17-71e0-4100-8e77-ce6794789108/runs/08584106756214779332013528629CU31",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Failed",
+    "failedAction": "Probe_-_Force_a_failure_(DELETE_AFTER_TEST)",
+    "counts": {
+      "Send_an_email_(V2)": {
+        "Succeeded": 0,
+        "Failed": 0
+      }
+    }
+  },
+  "pass": true,
+  "why": [],
+  "screenshot": "c:\\Users\\User\\Documents\\JOC\\CDO - Internship powerapps automation\\refdocs\\issues\\evidence\\flow-09\\ok-fixedprobe.png"
+}

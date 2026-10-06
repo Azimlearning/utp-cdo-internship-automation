@@ -1,0 +1,43 @@
+{
+  "flow": "05",
+  "package": "fixed",
+  "scenario": "ok",
+  "at": "2026-10-02T04:47:22.056Z",
+  "flowId": "79d5d481-c35a-404c-8b16-11080b798e13",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T04:47:48.8327039Z",
+  "run": "08584106903796725121438678675CU03",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-02T04:48:26.3770119Z",
+  "failed": [],
+  "counts": {
+    "Send_an_email_(V2)": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 2
+    },
+    "Send_an_email_(V2)_2": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 2
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Skipped",
+    "Post_message_FAILED_2:Skipped",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Succeeded",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/79d5d481-c35a-404c-8b16-11080b798e13/runs/08584106903796725121438678675CU03",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Succeeded"
+  },
+  "pass": true,
+  "why": []
+}

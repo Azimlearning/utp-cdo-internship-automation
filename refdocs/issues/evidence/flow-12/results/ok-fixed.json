@@ -1,0 +1,63 @@
+{
+  "flow": "12",
+  "package": "fixed",
+  "scenario": "ok",
+  "at": "2026-10-02T05:17:26.061Z",
+  "flowId": "343b10e9-63cd-46b8-b250-d8acea08f679",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T05:17:31.6471922Z",
+  "run": "08584106885983698410232286986CU17",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-02T05:18:07.661777Z",
+  "failed": [],
+  "counts": {
+    "Add_a_row_into_a_table": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Add_a_row_into_a_table_3": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_4": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 2
+    },
+    "Add_a_row_into_a_table_5": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Send_an_email_(V2)": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Skipped",
+    "Post_message_FAILED_2:Skipped",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Succeeded",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/343b10e9-63cd-46b8-b250-d8acea08f679/runs/08584106885983698410232286986CU17",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Succeeded"
+  },
+  "pass": true,
+  "why": []
+}

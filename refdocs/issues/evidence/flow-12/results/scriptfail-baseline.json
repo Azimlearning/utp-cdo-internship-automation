@@ -1,0 +1,69 @@
+{
+  "flow": "12",
+  "package": "baseline",
+  "scenario": "scriptfail",
+  "at": "2026-10-02T05:14:27.275Z",
+  "flowId": "70232b9a-4315-4ebb-8c67-2adc62b011d7",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T05:14:34.8605853Z",
+  "run": "08584106887779261744415044066CU22",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-02T05:15:08.4045349Z",
+  "failed": [
+    {
+      "action": "Run_script",
+      "code": "BadRequest",
+      "error": "Unable to process template language expressions in action 'Run_script' inputs at line '0' and column '0': 'Attempt to divide an integral or decimal value by zero in function 'div'.'."
+    }
+  ],
+  "counts": {
+    "Add_a_row_into_a_table": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_3": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_4": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_5": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped",
+    "Post_message_in_a_chat_or_channel_4:Succeeded",
+    "Post_message_in_a_chat_or_channel_5:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/70232b9a-4315-4ebb-8c67-2adc62b011d7/runs/08584106887779261744415044066CU22",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Succeeded"
+  },
+  "pass": true,
+  "why": []
+}

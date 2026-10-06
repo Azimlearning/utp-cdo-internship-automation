@@ -1,0 +1,64 @@
+{
+  "flow": "13",
+  "package": "fixed",
+  "scenario": "ok",
+  "at": "2026-10-02T05:37:36.381Z",
+  "flowId": "2db08504-acb9-4e22-b371-54ba7eaa2fe1",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T05:37:42.0993642Z",
+  "run": "08584106873884213895183035154CU22",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-02T05:38:17.6163931Z",
+  "failed": [],
+  "counts": {
+    "Add_a_row_into_a_table": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Add_a_row_into_a_table_3": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 1
+    },
+    "Add_a_row_into_a_table_4": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 2
+    },
+    "Add_a_row_into_a_table_5": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 3
+    },
+    "Send_an_email_(V2)": {
+      "Succeeded": 1,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Skipped",
+    "Post_message_FAILED_2:Skipped",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Succeeded",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/2db08504-acb9-4e22-b371-54ba7eaa2fe1/runs/08584106873884213895183035154CU22",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Succeeded"
+  },
+  "pass": true,
+  "why": [],
+  "screenshot": "c:\\Users\\User\\Documents\\JOC\\CDO - Internship powerapps automation\\refdocs\\issues\\evidence\\flow-13\\ok-fixed.png"
+}

@@ -1,0 +1,701 @@
+{
+ "_readme": "Single source for FLOW-TRACKER.md (table) and ISSUES-BY-FLOW.md (per-flow sections). Edit here, then run: python tools/docs.py",
+ "flows": [
+  {
+   "no": 1,
+   "name": "Success Submit Email",
+   "problems": "Email failure is silent; backup uses a retired API (dead)",
+   "stage": "**Sandbox tested.** T1 reproduced; T2–T6 pass; emails and Teams alerts confirmed by the user. One alert-text defect (raw JSON on blank email) fixed and re-run",
+   "doc": "../issues/2026-09-30-flow-01-success-submit-email.md",
+   "next": "User glances at the 2 newest Teams alerts → **office-ready**",
+   "title": "Success Submit Email (student confirmation email)",
+   "issues": [
+    [
+     "1.1",
+     "If the email fails to send (bad or blank address, expired connection) the flow stops and nobody is told",
+     "**Observed** (baseline run failed silently)",
+     "✅ Try/Catch + Teams alert + mark run Failed"
+    ],
+    [
+     "1.2",
+     "The only backup uses SharePoint's SendEmail API, **retired 31 Oct 2025**, so it does nothing; and it only runs on time-out, not on failure",
+     "Read + Docs",
+     "✅ removed"
+    ],
+    [
+     "1.3",
+     "Backup path hard-codes Kamal's address as sender; breaks on names with an apostrophe",
+     "Read",
+     "✅ removed with 1.2"
+    ],
+    [
+     "1.4",
+     "Power Automate's own failure-alert subscription is off for the flow",
+     "Read",
+     "➖ note; moot once 1.1 is fixed"
+    ],
+    [
+     "1.5",
+     "Subject uses the UTC month (\"…for September Semester\")",
+     "Read",
+     "➖ cosmetic, left alone"
+    ],
+    [
+     "1.6",
+     "Only export without the `[LIVE-CDO]` tag; unclear if it's switched on in production",
+     "Read",
+     "⬜ someone with access must check"
+    ],
+    [
+     "1.7",
+     "Connections expire and then fail with `Unauthorized`",
+     "**Observed** (during the sandbox import)",
+     "⬜ admin-guide item, see cross-cutting"
+    ],
+    [
+     "1.8",
+     "Alert for a blank email showed raw connector JSON",
+     "**Observed** (Teams screenshot)",
+     "✅ fixed and re-run; message text awaits your Teams look"
+    ]
+   ]
+  },
+  {
+   "no": 2,
+   "name": "Acknowledgement Letter Email Process",
+   "problems": "Deprecated file trigger (3 outputs the new one doesn't provide); strict Excel format; approvals gate",
+   "stage": "**Trigger swap + subfolder guard sandbox-tested on a harness** (T-H1/H2/H3/H5, and T-H4b 2026-10-02: a direct file fires once, a subfolder file does not). The rest of the flow (approvals, scripts, letters) is untested until a real office run. Harness Off",
+   "doc": "../issues/2026-09-30-flow-02-acknowledgement-letter.md",
+   "next": "Confirm with CDO that staff never use subfolders; office test last (needs its own mini-plan)",
+   "title": "Acknowledgement Letter Email Process (appointment letters)",
+   "issues": [
+    [
+     "2.1",
+     "Uses the **deprecated** \"When a file is created in a folder\" trigger (likely cause of flaky letter drop)",
+     "Read + Docs",
+     "✅ trigger swap built and harness-tested"
+    ],
+    [
+     "2.2",
+     "The old trigger supplies content, name and path; the replacement supplies none of these, so a bare swap breaks the flow",
+     "Read",
+     "🔶 handled: Get file content added, 3 expressions remapped"
+    ],
+    [
+     "2.3",
+     "The replacement trigger also fires for files in subfolders (the old one didn't)",
+     "**Observed**",
+     "✅ guard added and **re-tested live (T-H4b)**"
+    ],
+    [
+     "2.4",
+     "The dropped Excel must match an exact format (`Course`/`Host Company` headers with a trailing space, table named `Database`); otherwise the scripts fail",
+     "Read (2023–24 admin guide)",
+     "⬜ candidate cause of \"Excel reading doesn't work\""
+    ],
+    [
+     "2.5",
+     "Failures inside the cleaning scripts give only a generic FAILED message",
+     "Read",
+     "⬜ later"
+    ],
+    [
+     "2.6",
+     "Cleaned copies were named with `%20` for spaces (old trigger's encoded name)",
+     "Read; **Observed** the new name is plain",
+     "🔶 change is cosmetic"
+    ],
+    [
+     "2.7",
+     "Excel template and Office Script referenced by hard-coded IDs; replacing the template file breaks the flow silently",
+     "Read (D-03)",
+     "⬜ issue 2"
+    ],
+    [
+     "2.8",
+     "The rest of the flow (2 Teams approvals, Word→PDF, emails) has never been run outside production",
+     "n/a",
+     "⬜ only an office run can test it"
+    ]
+   ]
+  },
+  {
+   "no": 3,
+   "name": "Add HC Supervisor into MasterList",
+   "problems": "Failed runs are reported **Succeeded**; partial writes; FAILED alert has no detail; hard-coded Excel id",
+   "stage": "**Sandbox tested twice** (sample rows, then a real Excel read of a generated workbook; 3 scenarios x 2 packages, all as expected). Both copies Off",
+   "doc": "../issues/2026-09-30-flow-03-add-hc-supervisor.md",
+   "next": "Teams alert wording; office test with the production workbook and ids",
+   "title": "Add HC Supervisor into MasterList (sandbox-tested 2026-09-30 and with real Excel 2026-10-06)",
+   "issues": [
+    [
+     "3.1",
+     "**A failed run is reported as \"Succeeded\"** in run history (green banner over a failed loop)",
+     "**Observed** (sample rows, and a real Excel read: missing workbook and rejected row)",
+     "✅ Terminate(Failed) after the alert"
+    ],
+    [
+     "3.2",
+     "Partial writes: row 1 saved, row 2 failed, nothing reports how far it got",
+     "**Observed**",
+     "🔶 alert now names the failed step; rollback not attempted"
+    ],
+    [
+     "3.3",
+     "FAILED message names no step, error or run link",
+     "Read",
+     "✅ Failed step + Error + run link added"
+    ],
+    [
+     "3.4",
+     "Every Excel row is written as a new item, so running it twice duplicates supervisors",
+     "Read",
+     "⬜ needs a CDO decision (skip or update?)"
+    ],
+    [
+     "3.5",
+     "The FAILED branch hangs off the last COMPLETED post, so it also fires if only that Teams *message* fails",
+     "Read",
+     "✅ alert now keyed to the real work"
+    ],
+    [
+     "3.6",
+     "Excel file, drive and table are hard-coded IDs",
+     "Read (D-03)",
+     "⬜ issue 2"
+    ],
+    [
+     "3.7",
+     "(Bug caught during the fix) inside a loop, `result()` items have array outputs and broke the first alert expression",
+     "**Observed**",
+     "✅ type-safe expression"
+    ]
+   ]
+  },
+  {
+   "no": 4,
+   "name": "Add Host Company into MasterList",
+   "problems": "Same as flow 3: false \"Succeeded\", partial writes, no dup check, no alert detail",
+   "stage": "**Sandbox tested twice** (sample rows, then a real Excel read of a generated workbook; 3 scenarios x 2 packages, all as expected). Both copies Off",
+   "doc": "../issues/2026-09-30-flow-04-add-host-company.md",
+   "next": "Teams alert wording; office test with the production workbook and ids",
+   "title": "Add Host Company into MasterList (sandbox-tested 2026-09-30 and with real Excel 2026-10-06)",
+   "issues": [
+    [
+     "4.1",
+     "Failed runs reported \"Succeeded\"",
+     "**Observed** (sample rows, and a real Excel read: missing workbook and rejected row)",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "4.2",
+     "Partial write on a mid-loop failure",
+     "**Observed**",
+     "🔶 alert names the failed step; no rollback"
+    ],
+    [
+     "4.3",
+     "No duplicate check (rerun re-adds every row)",
+     "**Observed**",
+     "⬜ CDO decision"
+    ],
+    [
+     "4.4 / 4.5",
+     "FAILED alert has no detail; fires if only the COMPLETED message fails",
+     "Read",
+     "✅"
+    ],
+    [
+     "4.6",
+     "Hard-coded Excel file + table IDs",
+     "Read",
+     "⬜ issue 2"
+    ]
+   ]
+  },
+  {
+   "no": 5,
+   "name": "Bulk Email To Start Registration",
+   "problems": "False \"Succeeded\"; no rollback on mid-batch failure; hard-coded attachment item 282",
+   "stage": "**Sandbox tested** (all recipients redirected to your inbox); fix passes. Re-tested 2026-10-02 after the wrapper change (passes). Sandbox copies Off",
+   "doc": "../issues/2026-09-30-flow-05-bulk-email-start-registration.md",
+   "next": "Teams alert wording (email count settled by run data: 2 per ok run)",
+   "title": "Bulk Email To Start Registration (sandbox-tested 2026-09-30)",
+   "issues": [
+    [
+     "5.1",
+     "Failed runs reported \"Succeeded\"",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "5.2",
+     "Mid-batch failure leaves already-sent emails; a re-click re-emails students",
+     "Read",
+     "🔶 alert only; CDO decision"
+    ],
+    [
+     "5.3 / 5.4",
+     "FAILED message has no detail; fires if only the COMPLETED message fails",
+     "Read",
+     "✅"
+    ],
+    [
+     "5.5",
+     "Guideline attachment fetched by hard-coded list item ID 282",
+     "Read",
+     "⬜ admin-guide / issue 2"
+    ],
+    [
+     "5.6",
+     "Sends from a personal mailbox",
+     "Read",
+     "⬜ P4"
+    ],
+    [
+     "5.7",
+     "Logo file read had no alert if missing",
+     "Read",
+     "✅ moved inside Try"
+    ]
+   ]
+  },
+  {
+   "no": 6,
+   "name": "Clear Raw Database",
+   "problems": "False \"Succeeded\"; half-cleared state if the Excel reset fails after the deletes",
+   "stage": "**Sandbox tested**; fix passes. Both sandbox copies Off",
+   "doc": "../issues/2026-10-01-flow-06-clear-raw-database.md",
+   "next": "Teams alert wording; admin-guide note on manual SummaryTable reset",
+   "title": "Clear Raw Database (sandbox-tested 2026-10-01)",
+   "issues": [
+    [
+     "6.1",
+     "Failed runs reported \"Succeeded\"",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "6.2",
+     "Half-cleared state (rows deleted, Excel summary not reset)",
+     "**Observed**",
+     "🔶 alert only; manual reset note for the admin guide"
+    ],
+    [
+     "6.3",
+     "FAILED alert has no detail",
+     "Read",
+     "✅"
+    ],
+    [
+     "6.4",
+     "Hard-coded Excel file and Office Script IDs",
+     "Read",
+     "⬜ issue 2"
+    ],
+    [
+     "6.5",
+     "No confirmation before deleting everything",
+     "Read",
+     "⬜ PowerApp suggestion"
+    ]
+   ]
+  },
+  {
+   "no": 7,
+   "name": "Combine raw data",
+   "problems": "False \"Succeeded\"; parallel Excel writes (lost rows / locks); possible duplicate rows per attachment; COMPLETED posted before the final copy",
+   "stage": "**Sandbox tested for failure handling** (Excel steps stubbed, so the concurrency fix is unproven). Both copies Off",
+   "doc": "../issues/2026-10-02-flow-07-combine-raw-data.md",
+   "next": "Office test with a real workbook; check duplicate-row question 7.3",
+   "title": "Combine raw data (sandbox-tested 2026-10-02; Excel parts stubbed)",
+   "issues": [
+    [
+     "7.1",
+     "Failed runs reported \"Succeeded\"",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "7.2",
+     "Default-parallel loop writes rows into one Excel workbook (lost rows / locks)",
+     "Read",
+     "🔶 concurrency 1 in the fix; untested"
+    ],
+    [
+     "7.3",
+     "A student with N attachments may get N identical rows",
+     "Read",
+     "⬜ real-data check first"
+    ],
+    [
+     "7.4 / 7.7",
+     "COMPLETED and the PIC email come before the final copy to the downstream folder",
+     "Read",
+     "✅ copy moved inside Try"
+    ],
+    [
+     "7.5",
+     "FAILED alert detail only via the last step",
+     "**Observed**",
+     "✅"
+    ],
+    [
+     "7.6",
+     "Hard-coded template path and Office Script id",
+     "Read",
+     "⬜ issue 2"
+    ],
+    [
+     "7.8",
+     "Fixed 30 s wait instead of a check",
+     "Read",
+     "➖"
+    ]
+   ]
+  },
+  {
+   "no": 8,
+   "name": "Delete Student List",
+   "problems": "False \"Succeeded\" (real SharePoint failure used in the test); no failure detail",
+   "stage": "**Sandbox tested** end to end, no stubs; fix passes. Both copies Off",
+   "doc": "../issues/2026-10-02-flow-08-delete-student-list.md",
+   "next": "Teams alert wording",
+   "title": "Delete Student List (sandbox-tested 2026-10-02, real failure)",
+   "issues": [
+    [
+     "8.1",
+     "Failed runs reported \"Succeeded\" (real \"Item Not Found\" failure)",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "8.2",
+     "Partial delete with no report of which items",
+     "Read",
+     "🔶 alert names the failing action"
+    ],
+    [
+     "8.3",
+     "FAILED alert has no detail",
+     "Read",
+     "✅"
+    ],
+    [
+     "8.4",
+     "Read capped at 10,000 items",
+     "Read",
+     "➖ low risk"
+    ],
+    [
+     "8.5",
+     "No confirmation before deleting the whole list",
+     "Read",
+     "⬜ PowerApp suggestion"
+    ]
+   ]
+  },
+  {
+   "no": 9,
+   "name": "Email To Inform Student Updates",
+   "problems": "False \"Succeeded\" when the email address is malformed; no failure detail; address not validated",
+   "stage": "**Sandbox tested** (all mail to your inbox); fix passes. Both sandbox copies Off",
+   "doc": "../issues/2026-10-02-flow-09-email-inform-student-updates.md",
+   "next": "Teams alert wording",
+   "title": "Email To Inform Student Updates (sandbox-tested 2026-10-02)",
+   "issues": [
+    [
+     "9.1",
+     "Failed email (malformed address) reported \"Succeeded\"",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "9.2",
+     "Address from the PowerApp field is not validated",
+     "Observed (same mechanism)",
+     "⬜ PowerApp suggestion"
+    ],
+    [
+     "9.3",
+     "FAILED alert has no detail",
+     "Read",
+     "✅"
+    ],
+    [
+     "9.4",
+     "Student gets no Teams message when the email fails",
+     "Read",
+     "➖ acceptable"
+    ]
+   ]
+  },
+  {
+   "no": 10,
+   "name": "Email for Report Duty Reminder",
+   "problems": "False \"Succeeded\" when one reminder fails; partial batch send; duplicate students get duplicate reminders",
+   "stage": "**Sandbox tested** with the scenario runner (badaddr, readfail, ok); counts from run data. Sandbox copies Off",
+   "doc": "../issues/2026-10-02-flow-10-email-report-duty-reminder.md",
+   "next": "Teams alert wording",
+   "title": "Email for Report Duty Reminder (sandbox-tested 2026-10-02)",
+   "issues": [
+    [
+     "10.1",
+     "Failed send reported \"Succeeded\"",
+     "**Observed**",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "10.2",
+     "One bad address leaves a partly sent batch, no list of who was missed",
+     "**Observed** (run data: 2 sent, 1 failed in the same run)",
+     "🔶 alert names the failing action"
+    ],
+    [
+     "10.3",
+     "Duplicate Student List rows get duplicate reminders",
+     "**Observed** (run data: 2 reminders to the same address)",
+     "⬜ duplicate policy decision"
+    ],
+    [
+     "10.4",
+     "Re-click re-emails everyone still unregistered",
+     "Read",
+     "➖ by design"
+    ],
+    [
+     "10.5",
+     "Teams summary counts are loosely labelled",
+     "Read",
+     "➖ wording"
+    ],
+    [
+     "10.6",
+     "FAILED alert has no detail",
+     "Read",
+     "✅"
+    ]
+   ]
+  },
+  {
+   "no": 11,
+   "name": "Email for Student Report Duty Status",
+   "problems": "**The export is a duplicate of flow 4** (same flow id `a66117f3…`, identical definition): the real \"Get Status\" flow's definition is not in the repo",
+   "stage": "⛔ **Blocked: needs a fresh export of the real flow**",
+   "doc": null,
+   "next": "You: request the real export from your supervisor (MANUAL-TODO C); then review it like the others",
+   "title": "Email for Student Report Duty Status (export is a duplicate of flow 4)",
+   "issues": [],
+   "prereview": "Resolved 2026-10-02: the file is flow 4 again (same flow id, identical definition). Nothing about the real flow is known except that the PowerApp's \"Get Status\" button runs it (admin guide p16) and that status emails go to the PIC recipients on the config item."
+  },
+  {
+   "no": 12,
+   "name": "HC Supervisor Info MasterList Checking",
+   "problems": "False \"Succeeded\"; partial writes; every file in the folder is processed and emailed separately; hard-coded Excel/script ids",
+   "stage": "**Sandbox tested twice** (Excel stubbed, then real Excel Online reads/writes/attachment; only the two Office Scripts stay stubbed); fix passes in all scenarios. Both copies Off",
+   "doc": "../issues/2026-10-02-flow-12-hc-supervisor-masterlist-checking.md",
+   "next": "Teams alert wording; office test against the production template with a one-file folder; decide what happens to old files in the folder",
+   "title": "HC Supervisor Info MasterList Checking (sandbox-tested 2026-10-02, stubbed and with real Excel; Office Scripts stubbed)",
+   "issues": [
+    [
+     "12.1",
+     "Failed run reported \"Succeeded\" (script step or a row write deep in the loops)",
+     "**Observed** (forced errors, and a real Excel failure: missing file)",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "12.2",
+     "Partial write with no report (2 rows written, the 3rd failed, no PIC email, run Succeeded)",
+     "**Observed**",
+     "🔶 alert only; no rollback"
+    ],
+    [
+     "12.3",
+     "Every file in the folder is processed and each gets its own PIC email (2 files → every row twice, 2 emails)",
+     "**Observed** (stubbed listing; plus an unplanned real case: a stray file with other columns failed in the loop, run still green)",
+     "⬜ check real folder contents; decision"
+    ],
+    [
+     "12.4",
+     "Classification on real Excel data (4 rows, incl. a lower-case/trailing-space duplicate): exact → Matched, other position → Partially Not Matched, unknown name → Exactly Not Matched; unchanged by the fix",
+     "**Observed** (real Excel reads and writes)",
+     "➖ logic left alone"
+    ],
+    [
+     "12.5",
+     "Scripts clear the template tables first; a later failure leaves it cleared or half-filled",
+     "Read",
+     "➖ admin-guide note"
+    ],
+    [
+     "12.6",
+     "Hard-coded template, Office Script and table ids",
+     "Read (D-03)",
+     "⬜ issue 2"
+    ],
+    [
+     "12.7",
+     "Fixed 30 s Delay instead of a check",
+     "Read",
+     "➖"
+    ],
+    [
+     "12.8",
+     "Input file needs a `Database` table with exact headers",
+     "Read",
+     "⬜ same family as 2.4"
+    ],
+    [
+     "12.9",
+     "FAILED alert had no detail; for nested-loop failures it names `Apply_to_each_2` (limit of Power Automate), the run link finds the exact step",
+     "**Observed**",
+     "✅ with that limit"
+    ],
+    [
+     "12.10",
+     "Shares its workbook with flow 3: the Exactly Not Matched table it writes (`{CB10AEA9…}`) is the one flow 3 reads, so a partial run here means flow 3 imports only part of the new supervisors",
+     "Read (definitions)",
+     "⬜ admin-guide note (X11)"
+    ]
+   ],
+   "prereview": "Same FAILED-post pattern; runs on stale data if flow 7 wasn't re-run first (Read + admin guide)"
+  },
+  {
+   "no": 13,
+   "name": "Host Company Info MasterList Checking",
+   "problems": "False \"Succeeded\"; partial writes; every file in the folder processed and emailed separately; its output table feeds flow 4; hard-coded Excel/script ids",
+   "stage": "**Sandbox tested twice** (Excel stubbed, then real Excel Online reads/writes/attachment; only the two Office Scripts stay stubbed); fix passes in all scenarios. Both copies Off",
+   "doc": "../issues/2026-10-02-flow-13-host-company-masterlist-checking.md",
+   "next": "Teams alert wording; office test against the production template with a one-file folder; decide what happens to old files in the folder",
+   "title": "Host Company Info MasterList Checking (sandbox-tested 2026-10-02, stubbed and with real Excel; Office Scripts stubbed)",
+   "issues": [
+    [
+     "13.1",
+     "Failed run reported \"Succeeded\" (script step or a row write deep in the loops)",
+     "**Observed** (forced errors, and a real Excel failure: missing file)",
+     "✅ Try/Catch + Terminate"
+    ],
+    [
+     "13.2",
+     "Partial write with no report (2 rows written, the 3rd failed, no PIC email, run Succeeded)",
+     "**Observed**",
+     "🔶 alert only; no rollback"
+    ],
+    [
+     "13.3",
+     "Every file in the folder is processed and each gets its own PIC email (2 files → every row twice, 2 emails)",
+     "**Observed** (stubbed listing; plus an unplanned real case: a stray file with other columns failed in the loop, run still green)",
+     "⬜ check real folder contents; decision"
+    ],
+    [
+     "13.4",
+     "Classification on real Excel data (4 rows, incl. a lower-case/trailing-space duplicate): identical → Matched, differing street → Partially Not Matched, unknown company → Exactly Not Matched; unchanged by the fix",
+     "**Observed** (real Excel reads and writes)",
+     "➖ logic left alone"
+    ],
+    [
+     "13.5",
+     "Shares its workbook with flow 4: the Exactly Not Matched table it writes is the one flow 4 reads, so a partial run here means flow 4 imports only part",
+     "Read",
+     "⬜ admin-guide note (X11)"
+    ],
+    [
+     "13.6",
+     "Hard-coded drive-item id, Office Script id and table GUIDs; replacing the template breaks flows 13 and 4",
+     "Read (D-03)",
+     "⬜ issue 2"
+    ],
+    [
+     "13.7",
+     "Scripts clear the template first; a later failure leaves it cleared or half-filled",
+     "Read",
+     "➖ admin-guide note"
+    ],
+    [
+     "13.8",
+     "Fixed 30 s Delay; input needs a `Database` table with exact headers",
+     "Read",
+     "➖ / ⬜ like 2.4"
+    ],
+    [
+     "13.9",
+     "Runs on flow 7's last output; stale if flow 7 wasn't re-run first",
+     "Read + admin guide",
+     "⬜ admin-guide note"
+    ],
+    [
+     "13.10",
+     "FAILED alert had no detail; nested-loop failures name `Apply_to_each_2`, the run link finds the exact write",
+     "**Observed**",
+     "✅ with that limit"
+    ]
+   ],
+   "prereview": "Same pattern; **hard-coded drive-item ID and Office Script ID** (clearest case of \"Excel reading doesn't work\"); same stale-data footgun (Read)"
+  },
+  {
+   "no": 14,
+   "name": "Store Student List into SharePoint List",
+   "problems": "Deprecated trigger; archive subfolder inside watched folder (loop risk, guard mandatory); no failure alert",
+   "stage": "**Sandbox tested** (sample rows; real Excel read of a dropped workbook through the trigger's `{Identifier}` works, 6 of 8 rows created, file archived); real-Excel `readfail`/`rowfail` not run. Check that both copies are Off",
+   "doc": "../issues/2026-09-30-flow-14-store-student-list.md",
+   "next": "Teams alert wording; re-run the real-Excel readfail pair (wrong table name); first production drop should be a small file; decide on the concurrent-duplicates fix",
+   "title": "Store Student List into SharePoint List (sandbox-tested 2026-09-30; real-Excel ok 2026-10-06)",
+   "issues": [
+    [
+     "14.1",
+     "Uses the **deprecated** file trigger (same as flow 2)",
+     "Read + Docs",
+     "✅ trigger swap sandbox-tested"
+    ],
+    [
+     "14.2",
+     "**Loop risk:** the flow archives the processed file into `StudentList_DropFile/Archive Student List`, a *subfolder of the watched folder*. With the replacement trigger this could re-trigger on its own archived file, so the subfolder guard is mandatory",
+     "Read + Docs",
+     "✅ guard sandbox-tested: the archive move did not re-trigger"
+    ],
+    [
+     "14.3",
+     "**No failure alert at all**; a failure just stops (run history at least shows Failed)",
+     "Read",
+     "✅ Try/Catch + Terminate sandbox-tested"
+    ],
+    [
+     "14.4",
+     "The \"Excel moved to Archive\" message posts even if the move failed for a reason other than a file lock",
+     "Read",
+     "⬜ note; not changed"
+    ],
+    [
+     "14.5",
+     "Excel read uses the trigger's path header; the replacement's `Identifier` can't be tested without a live Excel connection",
+     "Read",
+     "⬜ verify at the office with a real test file"
+    ],
+    [
+     "14.6",
+     "Reads the whole existing list before de-duplicating by email (pagination is set to 100,000)",
+     "Read",
+     "➖ **not a problem**, checked"
+    ],
+    [
+     "14.7",
+     "**Concurrent runs create duplicate students** (3 files dropped together → 5 rows for 2 students)",
+     "**Observed**",
+     "⬜ CDO decision (concurrency limit or write-time check)"
+    ],
+    [
+     "14.8",
+     "Baseline reports failed runs as \"Succeeded\" (as flow 3)",
+     "**Observed**",
+     "✅ Try/Catch + Terminate sandbox-tested"
+    ],
+    [
+     "14.9",
+     "On failure the file stays in the drop folder and the trigger won't re-fire for it; staff must re-drop",
+     "**Observed**",
+     "➖ admin-guide note"
+    ]
+   ]
+  }
+ ]
+}

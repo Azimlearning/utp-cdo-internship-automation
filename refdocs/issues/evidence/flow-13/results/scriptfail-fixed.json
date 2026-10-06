@@ -1,0 +1,76 @@
+{
+  "flow": "13",
+  "package": "fixed",
+  "scenario": "scriptfail",
+  "at": "2026-10-02T05:41:53.632Z",
+  "flowId": "2db08504-acb9-4e22-b371-54ba7eaa2fe1",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T05:42:51.7728892Z",
+  "run": "08584106870784495546865080503CU17",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "Host Company MasterList Checking failed at: Run_script",
+  "start": "2026-10-02T05:43:27.5804285Z",
+  "failed": [
+    {
+      "action": "Run_script",
+      "code": "BadRequest",
+      "error": "Unable to process template language expressions in action 'Run_script' inputs at line '0' and column '0': 'Attempt to divide an integral or decimal value by zero in function 'div'.'."
+    },
+    {
+      "action": "Try_-_Check_host_companies",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Add_a_row_into_a_table": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_3": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_4": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Add_a_row_into_a_table_5": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    },
+    "Send_an_email_(V2)": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Succeeded",
+    "Post_message_FAILED_2:Succeeded",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/2db08504-acb9-4e22-b371-54ba7eaa2fe1/runs/08584106870784495546865080503CU17",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Failed",
+    "failedAction": "Run_script"
+  },
+  "pass": true,
+  "why": [],
+  "screenshot": "c:\\Users\\User\\Documents\\JOC\\CDO - Internship powerapps automation\\refdocs\\issues\\evidence\\flow-13\\scriptfail-fixed.png"
+}

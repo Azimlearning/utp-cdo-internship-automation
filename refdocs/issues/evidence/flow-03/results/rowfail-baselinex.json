@@ -1,0 +1,63 @@
+{
+  "flow": "03",
+  "package": "baselinex",
+  "scenario": "rowfail",
+  "at": "2026-10-06T05:42:36.153Z",
+  "flowId": "7ff880ed-6c7a-40a5-9556-8aac32a55acf",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-06T05:42:57.442787Z",
+  "run": "08584103412318380204656680833CU28",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-06T05:47:34.1828795Z",
+  "failed": [
+    {
+      "action": "Apply_to_each",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    },
+    {
+      "action": "Create_item",
+      "code": "NotSpecified",
+      "error": ""
+    }
+  ],
+  "counts": {
+    "Create_item": {
+      "Succeeded": 1,
+      "Failed": 1,
+      "Skipped": 0,
+      "firstError": "The 'inputs.parameters' of workflow operation 'Create_item' of type 'OpenApiConnection' is not valid. Error details: The API operation 'PostItem' requires the property 'item/HCSupervisorName' to be a string of maximum length '255' but is of length '300'."
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped",
+    "Post_message_in_a_chat_or_channel_4:Succeeded",
+    "Post_message_in_a_chat_or_channel_5:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/7ff880ed-6c7a-40a5-9556-8aac32a55acf/runs/08584103412318380204656680833CU28",
+  "finalState": "Stopped",
+  "files": {},
+  "after": {
+    "CDO Sandbox - HC Supervisor": 1
+  },
+  "expected": {
+    "status": "Succeeded",
+    "failedAction": "Create_item",
+    "counts": {
+      "Create_item": {
+        "Succeeded": 1,
+        "Failed": 1
+      }
+    },
+    "after": {
+      "CDO Sandbox - HC Supervisor": 1
+    }
+  },
+  "pass": true,
+  "why": []
+}

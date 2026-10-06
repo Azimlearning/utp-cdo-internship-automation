@@ -1,0 +1,35 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Secrets — never commit (this project has no API keys, but keep the guard anyway)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local scratch — for one-off zip extraction/diffing while investigating a flow,
+# never for anything that should survive the session
+tmp/
+scratch/
+*.log
+
+# Built flow packages — reproducible via `python tools/build.py NN <target>` (D-08).
+# sandbox.json holds your personal sandbox site/list IDs; sandbox.example.json is the template.
+build/
+tools/sandbox.json
+# Playwright MCP page snapshots/console logs — can contain whatever was on screen
+.playwright-mcp/
+__pycache__/
+
+# Extracted flow contents — the .zip in flows/ is the canonical, re-importable
+# artifact. If you unzip one to inspect/diff it, do it in tmp/ (ignored above),
+# not next to the .zip, so flows/ never holds two copies of the same flow.
+flows/*/

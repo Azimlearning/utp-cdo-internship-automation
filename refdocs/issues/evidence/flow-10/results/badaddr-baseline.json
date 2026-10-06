@@ -1,0 +1,60 @@
+{
+  "flow": "10",
+  "package": "baseline",
+  "scenario": "badaddr",
+  "at": "2026-10-02T04:21:52.991Z",
+  "flowId": "3b057365-79e5-4ea7-a336-c7e6b28180d4",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T04:22:30.6443094Z",
+  "run": "08584106918997341183143598211CU09",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-02T04:23:06.280089Z",
+  "failed": [
+    {
+      "action": "Apply_to_each",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    },
+    {
+      "action": "Condition",
+      "code": "NotSpecified",
+      "error": ""
+    },
+    {
+      "action": "Send_an_email_(V2)",
+      "code": "NotSpecified",
+      "error": ""
+    }
+  ],
+  "counts": {
+    "Send_an_email_(V2)": {
+      "Succeeded": 2,
+      "Failed": 1,
+      "Skipped": 1
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped",
+    "Post_message_in_a_chat_or_channel_4:Succeeded",
+    "Post_message_in_a_chat_or_channel_5:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/3b057365-79e5-4ea7-a336-c7e6b28180d4/runs/08584106918997341183143598211CU09",
+  "finalState": "Stopped",
+  "after": {},
+  "expected": {
+    "status": "Succeeded",
+    "counts": {
+      "Send_an_email_(V2)": {
+        "Succeeded": 2,
+        "Failed": 1
+      }
+    }
+  },
+  "pass": true,
+  "why": []
+}

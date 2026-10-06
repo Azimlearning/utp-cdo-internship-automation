@@ -1,0 +1,58 @@
+{
+  "flow": "14",
+  "package": "fixedx",
+  "scenario": "ok",
+  "at": "2026-10-06T06:08:26.564Z",
+  "flowId": "e97a0444-e930-4996-b9a8-dc6b215981d2",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-06T06:08:41.6212784Z",
+  "dropped": [
+    "/Documents/CDO-Sandbox/StudentList_DropFile/StudentList_fixedx_ok.xlsx"
+  ],
+  "run": "08584103399270965308413247113CU10",
+  "status": "Succeeded",
+  "code": null,
+  "runError": null,
+  "start": "2026-10-06T06:09:19.4438864Z",
+  "failed": [],
+  "counts": {
+    "Create_item_2": {
+      "Succeeded": 6,
+      "Failed": 0,
+      "Skipped": 2
+    }
+  },
+  "teamsPosts": [
+    "Post_message_FAILED_1:Skipped",
+    "Post_message_FAILED_2:Skipped",
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Succeeded",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Succeeded",
+    "Post_message_in_a_chat_or_channel_4:Succeeded",
+    "Post_message_in_a_chat_or_channel_6:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/e97a0444-e930-4996-b9a8-dc6b215981d2/runs/08584103399270965308413247113CU10",
+  "finalState": "Stopped",
+  "files": {},
+  "after": {
+    "CDO Sandbox - Student List": 6
+  },
+  "folders": {
+    "/Documents/CDO-Sandbox/StudentList_DropFile": [],
+    "/Documents/CDO-Sandbox/StudentList_DropFile/Archive Student List": [
+      "readfail student list.xlsx",
+      "StudentList_fixedx_ok.xlsx",
+      "rowfail student list.xlsx",
+      "ok student list.xlsx"
+    ]
+  },
+  "expected": {
+    "status": "Succeeded",
+    "after": {
+      "CDO Sandbox - Student List": 6
+    }
+  },
+  "pass": true,
+  "why": []
+}

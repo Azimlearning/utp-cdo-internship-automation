@@ -1,0 +1,56 @@
+{
+  "flow": "04",
+  "package": "fixedx",
+  "scenario": "readfail",
+  "at": "2026-10-06T06:03:11.943Z",
+  "flowId": "f872a65f-0f7c-461c-9dd9-2791fe59283b",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-06T06:03:32.3910076Z",
+  "run": "08584103402581210163996722354CU23",
+  "status": "Failed",
+  "code": "Terminated",
+  "runError": "Add Host Company failed at: List_rows_present_in_a_table",
+  "start": "2026-10-06T06:03:47.7258044Z",
+  "failed": [
+    {
+      "action": "List_rows_present_in_a_table",
+      "code": "NotFound",
+      "error": ""
+    },
+    {
+      "action": "Try_-_Add_host_companies",
+      "code": "ActionFailed",
+      "error": "An action failed. No dependent actions succeeded."
+    }
+  ],
+  "counts": {
+    "Create_item": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped",
+    "Post_message_in_a_chat_or_channel_4:Succeeded",
+    "Post_message_in_a_chat_or_channel_5:Succeeded"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/f872a65f-0f7c-461c-9dd9-2791fe59283b/runs/08584103402581210163996722354CU23",
+  "finalState": "Stopped",
+  "files": {},
+  "after": {
+    "CDO Sandbox - Host Company": 0
+  },
+  "expected": {
+    "status": "Failed",
+    "failedAction": "List_rows_present_in_a_table",
+    "after": {
+      "CDO Sandbox - Host Company": 0
+    }
+  },
+  "pass": true,
+  "why": []
+}

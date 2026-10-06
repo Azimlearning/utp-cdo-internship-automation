@@ -1,0 +1,35 @@
+{
+ "_readme": "Copy to tools/sandbox.json and fill every <...> value. Keys are PRODUCTION identifiers found in the flow exports; values are your sandbox equivalents. See refdocs/guides/sandbox_runbook.md step 2.",
+ "replace": {
+  "https://utpmy.sharepoint.com/sites/CareerDevelopmentOfficeCDO": "<sandbox site URL, e.g. https://utpmy.sharepoint.com/sites/CDO-Sandbox-Fakhrul>",
+  "be7f2b53-cc4e-42b1-a043-a7d6a849ba42": "<GUID of sandbox 'Control Template' list (Teams config, item ID 1)>",
+  "287cbf2d-74fc-44ee-8bca-f26719b1feb3": "<GUID of sandbox 'Report Duty Registration' list (flow 1 trigger)>",
+  "kamalazreel.k@utp.edu.my": "<your own UTP email address>",
+  "50892394-61b5-4551-86a9-20e17b33e57e": "<GUID of sandbox 'HC Supervisor' list (flow 3 target)>",
+  "29bdab8e-f4e8-4caf-8e9b-e1437e74f2f5": "<GUID of sandbox 'Student List' (flow 14 target)>",
+  "3db2d009-d5dd-4ef0-bb47-ee85e8072a7d": "<GUID of the sandbox Documents library>",
+  "/Shared Documents/Power Automate Documents/[UTP_CSD_CDO_AppointmentLetter]/StudentList_DropFile": "/Documents/CDO-Sandbox/StudentList_DropFile",
+  "06c02770-f668-4f5c-8b4f-44ab220ae9b9": "<GUID of sandbox 'Host Company' list (flow 4 target)>",
+  "/Shared Documents/Power Automate Documents/[UTP_CSD_CDO_AppointmentLetter]": "/Documents/CDO-Sandbox/F7"
+ },
+ "harness": {
+  "library": "<GUID of the sandbox Documents library (for trigger harnesses)>",
+  "root": "/Documents/CDO-Sandbox",
+  "run_trigger_list": "<GUID of sandbox 'Flow Run Trigger' list (flow 3 harness trigger)>",
+  "run_trigger_title": "CDO Sandbox - Flow Run Trigger"
+ },
+ "pa": {
+  "env": "<Power Automate environment id, e.g. Default-xxxxxxxx-...>",
+  "account": "<your sign-in address, as shown in the connection picker>"
+ },
+ "excel_allowed": [
+  "me",
+  "Database",
+  "HCSupervisor",
+  "SVExactlyNotMatched",
+  "HostCompany",
+  "ExactlyNotMatched",
+  "StudentList"
+ ],
+ "_excel_allowed_readme": "Sandbox-only Excel values allowed through the production-ID guard by the baselinex/fixedx real-Excel targets ('me' = your OneDrive; the rest are mock-template/test-workbook table names)."
+}

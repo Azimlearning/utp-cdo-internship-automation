@@ -1,0 +1,29 @@
+{
+  "flow": "02",
+  "package": "harness",
+  "scenario": "guard",
+  "at": "2026-10-02T09:07:40.864Z",
+  "flowId": "a6b25a51-6f73-4b25-969c-09c542e06a7e",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-02T09:07:42.7729339Z",
+  "firstRunStatus": "Succeeded",
+  "runs": [
+    "Succeeded"
+  ],
+  "status": "Succeeded",
+  "finalState": "Stopped",
+  "copies": [
+    "[CLEANED]_G1 direct file.xlsx"
+  ],
+  "stillInWatched": {
+    "/Documents/CDO-Sandbox/Drop File": [],
+    "/Documents/CDO-Sandbox/Drop File/Sub": [
+      "G2 in subfolder.xlsx"
+    ]
+  },
+  "archived": [
+    "G1 direct file.xlsx"
+  ],
+  "pass": true,
+  "why": []
+}
