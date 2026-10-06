@@ -45,7 +45,7 @@ Last updated: 2026-10-02. Email-count checks are no longer needed: the sandbox r
 
 | ☐ | Decision | Options |
 |---|---|---|
-| ☐ | Commit the work to git? (nothing is committed yet; `flows/`, `refdocs/`, `tools/` are all untracked) | Yes, one commit now / commit per flow / wait |
+| ☑ | Commit the work to git (done 2026-10-06: commit `c9f3e69`, pushed to the **public** repo https://github.com/Azimlearning/utp-cdo-internship-automation, branch `main`). Note: it holds the live flow exports, UTP site/list IDs and a staff email; switch the repo to private if CDO or UTP prefers | Done |
 | ☐ | Anything to keep when you delete sandbox flows? | Evidence screenshots and docs are already in the repo |
 
 ## E. Before the real-system rollout (see the rollout plan and execution doc)
