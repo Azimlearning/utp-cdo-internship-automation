@@ -1,0 +1,66 @@
+{
+  "flow": "14",
+  "package": "baselinex",
+  "scenario": "readfail",
+  "at": "2026-10-06T09:21:27.394Z",
+  "flowId": "5af5adff-dd99-4250-9d43-8a69694b3415",
+  "stoppedTwins": [],
+  "firstPoll": "2026-10-06T09:22:21.2327703Z",
+  "dropped": [
+    "/Documents/CDO-Sandbox/StudentList_DropFile/StudentList_baselinex_wrongtable.xlsx"
+  ],
+  "run": "08584103282836574930338075186CU22",
+  "status": "Failed",
+  "code": "ActionFailed",
+  "runError": "An action failed. No dependent actions succeeded.",
+  "start": "2026-10-06T09:23:22.3903328Z",
+  "failed": [
+    {
+      "action": "List_rows_present_in_a_table_2",
+      "code": "NotFound",
+      "error": ""
+    }
+  ],
+  "counts": {
+    "Create_item_2": {
+      "Succeeded": 0,
+      "Failed": 0,
+      "Skipped": 0
+    }
+  },
+  "teamsPosts": [
+    "Post_message_in_a_chat_or_channel:Succeeded",
+    "Post_message_in_a_chat_or_channel_13:Skipped",
+    "Post_message_in_a_chat_or_channel_2:Succeeded",
+    "Post_message_in_a_chat_or_channel_3:Skipped",
+    "Post_message_in_a_chat_or_channel_4:Skipped",
+    "Post_message_in_a_chat_or_channel_6:Skipped"
+  ],
+  "url": "https://make.powerautomate.com/environments/Default-84187be3-037e-41ec-889c-a150fe476432/flows/5af5adff-dd99-4250-9d43-8a69694b3415/runs/08584103282836574930338075186CU22",
+  "finalState": "Stopped",
+  "files": {},
+  "after": {
+    "CDO Sandbox - Student List": 0
+  },
+  "folders": {
+    "/Documents/CDO-Sandbox/StudentList_DropFile": [
+      "StudentList_baselinex_wrongtable.xlsx"
+    ],
+    "/Documents/CDO-Sandbox/StudentList_DropFile/Archive Student List": [
+      "readfail student list.xlsx",
+      "StudentList_fixedx_ok.xlsx",
+      "rowfail student list.xlsx",
+      "ok student list.xlsx",
+      "StudentList_baselinex_ok.xlsx"
+    ]
+  },
+  "expected": {
+    "status": "Failed",
+    "failedAction": "List_rows_present_in_a_table_2",
+    "after": {
+      "CDO Sandbox - Student List": 0
+    }
+  },
+  "pass": true,
+  "why": []
+}

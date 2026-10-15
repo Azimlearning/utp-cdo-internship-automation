@@ -113,6 +113,18 @@ An ADR is worth writing when the decision (a) is expensive to reverse, (b) will 
 
 **Trade-offs / rejected:** Class R flows are not success-tested before the first real run, so STATUS.md must say "awaiting first real run" until it is read; the residual risk is small because success runs of the same packages passed in the sandbox on real SharePoint/Outlook/Teams, but it is not zero. Rejected: (a) applying all 12 fixes in one sitting (a failure could not be attributed); (b) testing mass-email/delete flows against the real lists "just once" (it acts on real people or data); (c) editing flows by hand as the default (slower, unrepeatable, and not the artifact that was tested). A probe applied to a flow with a real trigger fails any real event in that window; the doc makes that explicit and puts those flows in quiet hours.
 
+### D-11 — After stabilization, improvements to the flows and the PowerApp are in scope (proposed)
+
+**Status:** proposed by the project owner 2026-10-06; **needs the CDO supervisor's confirmation** before Phases E–G of `refdocs/plans/2026-10-06-next-phase-roadmap.md` start.
+
+**Decision:** Once the fixes are live (rollout), the flows are migrated off the departing account (PRD P4) and a rollover has been run on the fixed system (P5–P6), the project may (a) change flow designs to prevent the failure modes found in testing (duplicates on re-run, half-done batches, stray files, silent failed drops, replaced templates), (b) add an admin/control screen and input validation to the PowerApp, and (c) add small new flows (health check, retry, rollover assistant). This lifts PRD §5's "no new features" and "no PowerApp UI work" non-goals for that later phase only.
+
+**Why:** Sandbox testing showed that most failures are design problems that alerts can only report, not prevent: flows 3/4/5 duplicate on re-run, flow 10 leaves half-sent batches, flows 12/13 break on a stray file, flow 14 leaves failed files in the drop folder silently, and destructive buttons have no confirmation. Staff also have no view of what ran. The owner also wants the system easy to operate after handover.
+
+**Guardrails:** stabilization and ownership first (no improvement shipped before PRD P4 is done, so nothing is built twice on connections that will change); Power Platform low-code and standard connectors by default (D-04; premium licensing unconfirmed); sandbox-first and one change at a time (D-08); change freeze around rollovers; every change documented in the admin runbook.
+
+**Trade-offs / rejected:** Starting improvements now, in parallel with the rollout: rejected, it mixes untested behaviour changes into the first live deployment and would be rebuilt after the ownership move. A full PowerApp/flow rebuild: rejected (D-01 still holds; working match logic stays). Keeping the original non-goals: rejected by the owner, because alerts alone leave the known design failures in place.
+
 ---
 
 ## Working assumptions (`ASSUMED:`)

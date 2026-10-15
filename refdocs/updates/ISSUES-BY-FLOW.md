@@ -154,7 +154,7 @@ Not reviewed yet. Known before review: Resolved 2026-10-02: the file is flow 4 a
 | 13.9 | Runs on flow 7's last output; stale if flow 7 wasn't re-run first | Read + admin guide | ⬜ admin-guide note |
 | 13.10 | FAILED alert had no detail; nested-loop failures name `Apply_to_each_2`, the run link finds the exact write | **Observed** | ✅ with that limit |
 
-## Flow 14: Store Student List into SharePoint List (sandbox-tested 2026-09-30; real-Excel ok 2026-10-06)
+## Flow 14: Store Student List into SharePoint List (sandbox-tested 2026-09-30 and with real Excel 2026-10-06)
 
 | ID | Issue | Evidence | Fix status |
 |---|---|---|---|

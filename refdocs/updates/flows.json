@@ -636,10 +636,10 @@
    "no": 14,
    "name": "Store Student List into SharePoint List",
    "problems": "Deprecated trigger; archive subfolder inside watched folder (loop risk, guard mandatory); no failure alert",
-   "stage": "**Sandbox tested** (sample rows; real Excel read of a dropped workbook through the trigger's `{Identifier}` works, 6 of 8 rows created, file archived); real-Excel `readfail`/`rowfail` not run. Check that both copies are Off",
+   "stage": "**Sandbox tested** (sample rows, then real Excel: `{Identifier}` read works, 6 of 8 rows created, file archived; wrong-table `readfail`: baseline silent Failed, fixed alerts). Both copies Off",
    "doc": "../issues/2026-09-30-flow-14-store-student-list.md",
-   "next": "Teams alert wording; re-run the real-Excel readfail pair (wrong table name); first production drop should be a small file; decide on the concurrent-duplicates fix",
-   "title": "Store Student List into SharePoint List (sandbox-tested 2026-09-30; real-Excel ok 2026-10-06)",
+   "next": "Teams alert wording; first production drop should be a small file; decide on the concurrent-duplicates fix",
+   "title": "Store Student List into SharePoint List (sandbox-tested 2026-09-30 and with real Excel 2026-10-06)",
    "issues": [
     [
      "14.1",

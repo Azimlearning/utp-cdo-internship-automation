@@ -1,0 +1,27 @@
+{
+ "flow": "14",
+ "package": "fixedx",
+ "scenario": "readfail",
+ "collected": "2026-10-06, read from the flow's run history through the Power Automate API after the sandbox runner was cut off (browser session dropped). The flow had been left On, so it processed the dropped file by itself; the numbers below are what the API returned, not a runner result.",
+ "dropped": "/Documents/CDO-Sandbox/StudentList_DropFile/StudentList_fixedx_wrongtable.xlsx (valid workbook; its table is called Sheet1Table, not StudentList)",
+ "flowId": "e97a0444-e930-4996-b9a8-dc6b215981d2",
+ "run": "08584103287801534414470211077CU15",
+ "start": "2026-10-06T09:15:06.0070198Z",
+ "end": "2026-10-06T09:15:18.2202877Z",
+ "status": "Failed",
+ "code": "Terminated",
+ "runError": "Store Student List failed at: List_rows_present_in_a_table_2",
+ "actionsNotSkipped": [
+  "List_rows_present_in_a_table_2:Failed:NotFound",
+  "Try_-_Store_student_list:Failed:ActionFailed",
+  "Catch_-_Alert_CDO_staff:Succeeded",
+  "Filter_array_-_Failed_in_loop:Succeeded",
+  "Filter_array_-_Failed_at_top_level:Succeeded",
+  "Post_message_FAILED_1:Succeeded",
+  "Post_message_FAILED_2:Succeeded",
+  "Terminate_-_Mark_run_as_failed:Succeeded"
+ ],
+ "expected": {"status": "Failed", "failedAction": "List_rows_present_in_a_table_2", "after": {"CDO Sandbox - Student List": 0}},
+ "pass": true,
+ "note": "Student List item count was not read back (runner not running), but Create_item_2 never ran: the read failed first."
+}

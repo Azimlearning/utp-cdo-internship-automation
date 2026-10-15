@@ -95,6 +95,8 @@ A single integrated system with four component types that must be reasoned about
 
 Explicitly out of scope. Revisit only by adding an ADR that says why.
 
+> **Proposed change (D-11, 2026-10-06, awaiting supervisor confirmation):** the second and third bullets below ("no new features", "no PowerApp UI work") would no longer apply **after P6**: robustness improvements, a PowerApp admin/control screen, form validation and a few small new flows become phases P7–P9. The other non-goals stay. Plan: `plans/2026-10-06-next-phase-roadmap.md`.
+
 - **Not a platform migration.** Not moving off Power Platform / SharePoint / Excel onto a custom web app or database, even though the owner is open to *small* custom code (D-04). The brief never asked for this and it would leave CDO staff unable to maintain the system.
 - **Not building new features beyond what the brief describes.** New-vs-partial-match detection, Teams notifications, personalized letters, and bulk/reminder emails are the full scope — see Module table. Nothing new is being added on top.
 - **Not fixing UI/UX of the PowerApp form itself** unless a fix specifically requires it (e.g., a manual-trigger schema change). This project's scope is the automation layer and its reliability, not a PowerApp redesign.
@@ -113,6 +115,9 @@ Explicitly out of scope. Revisit only by adding an ADR that says why.
 | **P4 — Office-laptop session 3: Ownership migration** | Move all 14 flows' connections off `kamalazreel.k@utp.edu.my`; move Outlook sends to a shared CDO mailbox | Every flow runs successfully under the new owner/connections with Kamal removed as owner |
 | **P5 — Semester rollover dry run + admin guideline** | Execute a full rollover (M5) against the fixed system in a controlled way; write the admin runbook (M8) | A non-technical CDO staff member can follow the guideline doc to run a rollover unsupervised |
 | **P6 — Live semester rollover** | The actual deadline event, monitored via the new Teams alerts from P2 | Rollover completes with zero silent failures; any failure that does occur is caught and visible in Teams within the same session |
+| **P7 — Robustness** *(proposed, D-11)* | Run log list, plain-language alerts, no duplicates on re-run, input validation, one-file guard, failed-file handling, Excel identity guard, completion checks instead of fixed delays | The failure modes observed in sandbox testing can no longer happen silently or produce duplicates; each change sandbox- and office-tested |
+| **P8 — PowerApp admin / control page** *(proposed, D-11)* | Status screen from the run log, confirmation screens on destructive buttons, Control Template editor, rollover checklist, pre-flight checks | A CDO admin can see what ran, run the rollover in order and cannot trigger a destructive step by accident |
+| **P9 — Student form polish and small new flows** *(proposed, D-11)* | Form validation and confirmation; health check, retry, rollover assistant, weekly summary flows (only where they clearly help) | Each addition has a sandbox test, an office test and a runbook page |
 
 ---
 
@@ -132,6 +137,7 @@ Canonical one-line list. Load-bearing entries are expanded as ADRs in `changelog
 | D-08 | Test every fix in a personal-account sandbox (baseline / fixed / prod packages) before the office laptop | No dev/test tier exists; the first attempt to act on a static-analysis claim showed it was wrong for 12 of 14 flows, so fixes must be proven by running them |
 | D-09 | Drive the sandbox through the Power Automate API with scripted scenarios (`tools/sandbox/pw.py`), guarded by a PreToolUse hook | UI clicking cost ~77 browser steps per flow with repeated failures; the API also yields per-iteration run data, replacing manual inbox checks |
 | D-10 | Roll fixes out in waves with a forced-failure probe; class R flows (real students/deletes/approvals) are proven by their first genuine run | No test environment; some flows cannot be test-run without acting on real people or data; the probe proves the alert path without side effects |
+| D-11 | *(Proposed, needs supervisor confirmation)* After P6, flow-design improvements, a PowerApp admin page and small new flows are in scope (P7–P9); stabilization and ownership migration come first | Sandbox tests showed design failures alerts can only report (duplicates, half-sent batches, stray files, silent failed drops, no confirmations); building before P4 would be redone on the new connections |
 
 ---
 

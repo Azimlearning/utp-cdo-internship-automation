@@ -47,12 +47,15 @@ A real workbook (`testdata/StudentList_TEST.xlsx`: table `StudentList`, 8 rows) 
 
 **Observed: each run took 6–7 minutes** (start 06:09:19 → end 06:16:33 for fixedx; 06:18:14 → 06:24:42 for baselinex), with `Do_until_-_Archive_Excel_File`, `Delay`, `Set_variable` and `Move_file` all Succeeded and the file ending up in `Archive Student List`. Excel Online keeps a read workbook locked for about 8 minutes (seen on flows 12/13), which is consistent with the archive loop (`Move_file`, retry every 60 s while "locked") waiting out a genuine lock. I did not read the individual loop iterations, so that explanation is likely but not confirmed; either way the file is archived successfully and the run is slow, not broken.
 
-**Not run (browser session dropped on 2026-10-06):** the `readfail` pair with a valid workbook that has no `StudentList` table. A first attempt with a corrupt (non-Excel) file showed that the **baseline takes 26 minutes** to fail (`List rows` returns `NotFound` after the connector's retries), and the fixed copy's trigger never fired a second poll in that attempt, so the case was redesigned (wrong table name) but not yet executed. The earlier stubbed `readfail`/`rowfail` results above still stand.
+| readfail (valid workbook, but its table is not called `StudentList`) | baselinex | **Failed** (`ActionFailed`) | `List_rows_present_in_a_table_2` failed (`NotFound`); **no FAILED alert at all** (both FAILED posts Skipped, the flow has none); the file stays stuck in the Drop folder | `results/readfail-baselinex.json` |
+| readfail | fixedx | **Failed** (`Terminated`) | failed in 12 seconds: "Store Student List failed at: List_rows_present_in_a_table_2"; Catch ran, both FAILED Teams posts sent; file stays in Drop (not archived) | `results/readfail-fixedx.json` (collected from run history: the runner was cut off and the flow, left On, picked the file up by itself) |
+
+So for flow 14 the fix turns a **silent failure** (run red in history, nobody told) into an alert with step, error and link. An earlier attempt with a *corrupt* (non-Excel) file showed that the baseline can take **26 minutes** to fail (the connector retries); a wrong table name fails in seconds. The `rowfail` real-Excel case was not repeated (it is covered by the stubbed run above).
 
 ## Not tested (needs the real flow)
 
 - The production workbook, drive and library (the `{Identifier}` mechanism itself is now proven on a OneDrive-backed library; the CDO team site is a SharePoint library with a different drive, so the first production drop should be a small file).
-- The real-Excel `readfail` / `rowfail` pair (see above).
+- A real-Excel `rowfail` (only the stubbed one was run).
 
 ## Office steps
 
